@@ -1,4 +1,4 @@
-# SpeedTune ⚡
+# SpeedTube - Video Speed Controller ⚡
 
 Chrome extension for controlling video playback speed with customizable presets and keyboard shortcuts.
 
@@ -13,10 +13,6 @@ Chrome extension for controlling video playback speed with customizable presets 
 
 ## Icon
 
-The extension needs an icon to work. Create or use an `icons/icon.png` file with sizes:
-- 16x16 pixels
-- 48x48 pixels  
-- 128x128 pixels
 
 You can use any graphic editor or online icon generator.
 

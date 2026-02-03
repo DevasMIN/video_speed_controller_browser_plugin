@@ -1,6 +1,6 @@
 {
   "extName": {
-    "message": "SpeedTune",
+    "message": "SpeedTube - Video Speed Controller",
     "description": "Nombre de la extensión"
   },
   "extDescription": {
@@ -8,12 +8,20 @@
     "description": "Descripción de la extensión"
   },
   "logoTitle": {
-    "message": "SPEEDTUNE",
+    "message": "SPEEDTUBE",
     "description": "Título del logo"
   },
   "logoSubtitle": {
-    "message": "controlador",
+    "message": "control de velocidad de reproducción",
     "description": "Subtítulo del logo"
+  },
+  "shortcutSetSpeed": {
+    "message": "establecer velocidad",
+    "description": "Descripción del atajo"
+  },
+  "shortcutNone": {
+    "message": "Sin atajos asignados",
+    "description": "Lista de atajos vacía"
   },
   "resetAllTitle": {
     "message": "Restablecer todas las configuraciones",
@@ -22,6 +30,10 @@
   "resetAllButton": {
     "message": "Restablecer",
     "description": "Texto del botón de reinicio"
+  },
+  "languageLabel": {
+    "message": "Idioma",
+    "description": "Etiqueta del selector de idioma"
   },
   "toggleLabel": {
     "message": "ON/OFF",

@@ -1,4 +1,4 @@
-# QuietTabs 🛑
+# Youtube - NoAutoPlay 🛑
 
 Chrome extension that blocks automatic video playback on YouTube when switching to a tab.
 

@@ -6,7 +6,7 @@ Collection of useful Chrome extensions with multi-language support.
 
 ## 🔌 Plugins
 
-### 1. SpeedTune ⚡
+### 1. SpeedTube ⚡
 **Folder:** `video_speed_controller/`
 
 Control video playback speed with customizable presets and keyboard shortcuts.
@@ -18,7 +18,7 @@ Control video playback speed with customizable presets and keyboard shortcuts.
 - ✅ Beautiful gradient interface
 - ✅ Support for all videos on any website
 
-### 2. QuietTabs 🛑
+### 2. Youtube - NoAutoPlay 🛑
 **Folder:** `disable_autoplayback/`
 
 Blocks automatic video playback on YouTube when switching to a tab.
@@ -58,7 +58,7 @@ Language is selected automatically based on browser language.
 
 ```
 browser_plugins/
-├── video_speed_controller/    # SpeedTune
+├── video_speed_controller/    # SpeedTube
 │   ├── _locales/              # Translations (ru, en, es)
 │   ├── icons/                 # Icons
 │   ├── manifest.json          # Configuration
@@ -66,7 +66,7 @@ browser_plugins/
 │   ├── content.js             # Page scripts
 │   └── background.js          # Background service
 │
-├── disable_autoplayback/      # QuietTabs
+├── disable_autoplayback/      # Youtube - NoAutoPlay
 │   ├── _locales/              # Translations (ru, en, es)
 │   ├── icons/                 # Icons
 │   ├── manifest.json          # Configuration

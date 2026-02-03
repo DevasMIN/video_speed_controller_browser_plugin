@@ -1,14 +1,18 @@
 {
   "extName": {
-    "message": "QuietTabs",
+    "message": "Youtube - NoAutoPlay",
     "description": "Nombre de la extensión"
   },
   "extDescription": {
     "message": "Desactiva la reproducción automática de videos en YouTube al cambiar de pestaña",
     "description": "Descripción de la extensión"
   },
+  "appNameShort": {
+    "message": "No Auto Play",
+    "description": "Nombre corto en cabecera"
+  },
   "popupTitle": {
-    "message": "🛑 QuietTabs",
+    "message": "🛑 Youtube - NoAutoPlay",
     "description": "Título del popup"
   },
   "popupSubtitle": {
@@ -42,6 +46,10 @@
   "infoItem3": {
     "message": "Funciona en todas las páginas de YouTube",
     "description": "Elemento de información 3"
+  },
+  "languageLabel": {
+    "message": "Idioma",
+    "description": "Etiqueta del selector de idioma"
   },
   "version": {
     "message": "Versión 1.0",

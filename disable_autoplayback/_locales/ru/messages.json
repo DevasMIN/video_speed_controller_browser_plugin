@@ -1,14 +1,18 @@
 {
   "extName": {
-    "message": "QuietTabs",
+    "message": "Youtube - NoAutoPlay",
     "description": "Название расширения"
   },
   "extDescription": {
     "message": "Отключает автоматическое воспроизведение видео на YouTube при переключении на вкладку",
     "description": "Описание расширения"
   },
+  "appNameShort": {
+    "message": "No Auto Play",
+    "description": "Короткое название в шапке"
+  },
   "popupTitle": {
-    "message": "🛑 QuietTabs",
+    "message": "🛑 Youtube - NoAutoPlay",
     "description": "Заголовок popup"
   },
   "popupSubtitle": {
@@ -42,6 +46,10 @@
   "infoItem3": {
     "message": "Работает на всех страницах YouTube",
     "description": "Пункт информации 3"
+  },
+  "languageLabel": {
+    "message": "Язык",
+    "description": "Метка переключателя языка"
   },
   "version": {
     "message": "Версия 1.0",

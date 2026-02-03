@@ -1,6 +1,6 @@
 {
   "extName": {
-    "message": "SpeedTune",
+    "message": "SpeedTube - Video Speed Controller",
     "description": "Название расширения"
   },
   "extDescription": {
@@ -8,12 +8,20 @@
     "description": "Описание расширения"
   },
   "logoTitle": {
-    "message": "SPEEDTUNE",
+    "message": "SPEEDTUBE",
     "description": "Заголовок логотипа"
   },
   "logoSubtitle": {
-    "message": "контроллер",
+    "message": "управление скоростью воспроизведения",
     "description": "Подзаголовок логотипа"
+  },
+  "shortcutSetSpeed": {
+    "message": "установить скорость",
+    "description": "Описание горячей клавиши"
+  },
+  "shortcutNone": {
+    "message": "Нет назначенных горячих клавиш",
+    "description": "Пустой список горячих клавиш"
   },
   "resetAllTitle": {
     "message": "Сбросить все настройки",
@@ -22,6 +30,10 @@
   "resetAllButton": {
     "message": "Сбросить",
     "description": "Текст кнопки сброса"
+  },
+  "languageLabel": {
+    "message": "Язык",
+    "description": "Метка переключателя языка"
   },
   "toggleLabel": {
     "message": "ВКЛ/ВЫКЛ",

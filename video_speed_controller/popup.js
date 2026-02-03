@@ -10,40 +10,84 @@ let currentPresets = [];
 let currentEditingIndex = null;
 let isEnabled = true;
 let currentScope = 'tab';
+let currentMessages = null; // null = use chrome.i18n
 
-// Функция для применения переводов
-function applyI18n() {
-    // Обрабатываем элементы с data-i18n
+// Загрузить переводы из _locales/{locale}/messages.json
+async function loadLocale(locale) {
+    try {
+        const url = chrome.runtime.getURL(`_locales/${locale}/messages.json`);
+        const res = await fetch(url);
+        const json = await res.json();
+        const messages = {};
+        for (const [key, obj] of Object.entries(json)) {
+            if (obj && obj.message) messages[key] = obj.message;
+        }
+        return messages;
+    } catch (e) {
+        return null;
+    }
+}
+
+// Функция для применения переводов (messages = null → chrome.i18n)
+function applyI18n(messages = null) {
+    currentMessages = messages;
+    const getMsg = (key) => {
+        if (messages && messages[key]) return messages[key];
+        return chrome.i18n.getMessage(key) || '';
+    };
+
     document.querySelectorAll('[data-i18n]').forEach(element => {
         const key = element.getAttribute('data-i18n');
-        const message = chrome.i18n.getMessage(key);
-        if (message) {
-            element.textContent = message;
-        }
+        const text = getMsg(key);
+        if (text) element.textContent = text;
     });
-    
-    // Обрабатываем title атрибуты
+
     document.querySelectorAll('[data-i18n-title]').forEach(element => {
         const key = element.getAttribute('data-i18n-title');
-        const message = chrome.i18n.getMessage(key);
-        if (message) {
-            element.title = message;
-        }
+        const text = getMsg(key);
+        if (text) element.title = text;
     });
-    
-    // Обрабатываем placeholder атрибуты
+
     document.querySelectorAll('[data-i18n-placeholder]').forEach(element => {
         const key = element.getAttribute('data-i18n-placeholder');
-        const message = chrome.i18n.getMessage(key);
-        if (message) {
-            element.placeholder = message;
-        }
+        const text = getMsg(key);
+        if (text) element.placeholder = text;
+    });
+}
+
+function getMessage(key) {
+    if (currentMessages && currentMessages[key]) return currentMessages[key];
+    return chrome.i18n.getMessage(key) || '';
+}
+
+function setActiveLangButton() {
+    chrome.storage.local.get(['preferredLocale'], (result) => {
+        const locale = result.preferredLocale || 'ru';
+        document.querySelectorAll('.lang-btn').forEach(btn => {
+            btn.classList.toggle('active', btn.getAttribute('data-lang') === locale);
+        });
     });
 }
 
 // Инициализация
 async function init() {
-    applyI18n(); // Применяем переводы
+    const result = await chrome.storage.local.get(['preferredLocale']);
+    const locale = result.preferredLocale || 'ru';
+    const messages = await loadLocale(locale);
+    applyI18n(messages);
+    setActiveLangButton();
+
+    document.querySelectorAll('.lang-btn').forEach(btn => {
+        btn.addEventListener('click', async () => {
+            const lang = btn.getAttribute('data-lang');
+            await chrome.storage.local.set({ preferredLocale: lang });
+            const msgs = await loadLocale(lang);
+            applyI18n(msgs);
+            setActiveLangButton();
+            updateShortcutsList();
+        });
+    });
+
     await loadSettings();
     renderPresets();
     setupEventListeners();
@@ -359,7 +403,10 @@ function updateShortcutsList() {
         .filter(p => p.shortcut);
     
     if (shortcuts.length === 0) {
-        list.innerHTML = '<div style="color: #999; font-size: 11px;">Нет назначенных горячих клавиш</div>';
+        const empty = document.createElement('div');
+        empty.style.cssText = 'color: #999; font-size: 11px;';
+        empty.textContent = getMessage('shortcutNone') || 'Нет назначенных горячих клавиш';
+        list.appendChild(empty);
         return;
     }
     
@@ -372,7 +419,8 @@ function updateShortcutsList() {
         keyBadge.textContent = shortcut.split('+').pop();
         
         const description = document.createElement('span');
-        description.textContent = `- установить скорость ${speed}%`;
+        const setSpeedText = getMessage('shortcutSetSpeed') || 'установить скорость';
+        description.textContent = `- ${setSpeedText} ${speed}%`;
         
         item.appendChild(keyBadge);
         item.appendChild(description);
@@ -389,7 +437,7 @@ async function updateVideoInfo() {
         // Проверяем доступность URL
         if (!isScriptableUrl(tab.url)) {
             document.getElementById('currentUrl').textContent = 'N/A';
-            document.getElementById('playStatus').textContent = '⏸ N/A';
+            document.getElementById('playStatus').textContent = getMessage('playStatus') || '⏸ N/A';
             document.getElementById('currentTime').textContent = '0:00';
             return;
         }
@@ -421,8 +469,8 @@ async function updateVideoInfo() {
             
             if (results && results[0] && results[0].result) {
                 const info = results[0].result;
-                document.getElementById('playStatus').textContent = 
-                    info.playing ? '▶ Playing' : '⏸ On Pause';
+                document.getElementById('playStatus').textContent =
+                    info.playing ? getMessage('playStatusPlaying') : getMessage('playStatus');
                 document.getElementById('currentTime').textContent = formatTime(info.currentTime);
                 updateCurrentSpeedDisplay(info.currentSpeed);
                 updateBadge(info.currentSpeed);
@@ -448,8 +496,8 @@ async function updateVideoInfo() {
                         }
                     }
                     if (response) {
-                        document.getElementById('playStatus').textContent = 
-                            response.playing ? '▶ Playing' : '⏸ On Pause';
+                        document.getElementById('playStatus').textContent =
+                            response.playing ? getMessage('playStatusPlaying') : getMessage('playStatus');
                         document.getElementById('currentTime').textContent = formatTime(response.currentTime);
                         if (response.currentSpeed) {
                             updateCurrentSpeedDisplay(response.currentSpeed);

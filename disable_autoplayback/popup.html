@@ -3,17 +3,27 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>YouTube Autoplay Blocker</title>
+  <title>Youtube - NoAutoPlay</title>
   <link rel="stylesheet" href="popup.css">
 </head>
 <body>
   <div class="container">
     <div class="header">
-      <h1 data-i18n="popupTitle">🛑 QuietTabs</h1>
-      <p class="subtitle" data-i18n="popupSubtitle">Блокировка автовоспроизведения YouTube</p>
+      <div class="header-row">
+        <img class="header-icon" src="icons/noautoplay_128x128.png" alt="">
+        <h1 class="header-title" data-i18n="appNameShort">No Auto Play</h1>
+      </div>
     </div>
 
     <div class="content">
+      <div class="lang-section">
+        <span class="lang-label" data-i18n="languageLabel">Язык</span>
+        <div class="lang-buttons">
+          <button type="button" class="lang-btn active" data-lang="ru">RU</button>
+          <button type="button" class="lang-btn" data-lang="en">EN</button>
+          <button type="button" class="lang-btn" data-lang="es">ES</button>
+        </div>
+      </div>
       <div class="toggle-section">
         <div class="toggle-label">
           <span class="label-text" data-i18n="statusLabel">Состояние расширения</span>

@@ -11,21 +11,28 @@
         <!-- Header -->
         <div class="header">
             <div class="logo-section">
-                <div class="logo-icon">⚡</div>
+                <img class="logo-icon" src="icons/icon_128x128.png" alt="">
                 <div class="logo-text">
-                    <div class="logo-title" data-i18n="logoTitle">SPEEDTUNE</div>
-                    <div class="logo-subtitle" data-i18n="logoSubtitle">контроллер</div>
+                    <div class="logo-title" data-i18n="logoTitle">SPEEDTUBE</div>
+                    <div class="logo-subtitle" data-i18n="logoSubtitle">управление скоростью воспроизведения</div>
                 </div>
             </div>
             <div class="header-controls">
-                <button id="resetAll" class="btn-reset" data-i18n-title="resetAllTitle" title="Сбросить все настройки">
-                    <span class="icon">↶</span> <span data-i18n="resetAllButton">Сбросить</span>
-                </button>
                 <label class="toggle-switch" for="toggleEnabled">
                     <input type="checkbox" id="toggleEnabled" name="toggleEnabled" checked aria-label="Enable or disable speed controller">
-                    <span class="slider"></span>
                     <span class="toggle-label" data-i18n="toggleLabel">ВКЛ/ВЫКЛ</span>
+                    <span class="slider"></span>
                 </label>
+            </div>
+        </div>
+
+        <!-- Language -->
+        <div class="lang-section">
+            <span class="lang-label" data-i18n="languageLabel">Язык</span>
+            <div class="lang-buttons">
+                <button type="button" class="lang-btn active" data-lang="ru">RU</button>
+                <button type="button" class="lang-btn" data-lang="en">EN</button>
+                <button type="button" class="lang-btn" data-lang="es">ES</button>
             </div>
         </div>
 
@@ -83,6 +90,13 @@
             <div id="shortcutsList" class="shortcuts-list">
                 <!-- Горячие клавиши будут добавлены динамически -->
             </div>
+        </div>
+
+        <!-- Reset at bottom -->
+        <div class="footer-actions">
+            <button id="resetAll" class="btn-reset btn-reset-bottom" data-i18n-title="resetAllTitle" title="Сбросить все настройки">
+                <span class="icon">↶</span> <span data-i18n="resetAllButton">Сбросить</span>
+            </button>
         </div>
     </div>
 

@@ -1,14 +1,18 @@
 {
   "extName": {
-    "message": "QuietTabs",
+    "message": "Youtube - NoAutoPlay",
     "description": "Extension name"
   },
   "extDescription": {
     "message": "Disables automatic video playback on YouTube when switching to a tab",
     "description": "Extension description"
   },
+  "appNameShort": {
+    "message": "No Auto Play",
+    "description": "Short name in header"
+  },
   "popupTitle": {
-    "message": "🛑 QuietTabs",
+    "message": "🛑 Youtube - NoAutoPlay",
     "description": "Popup title"
   },
   "popupSubtitle": {
@@ -42,6 +46,10 @@
   "infoItem3": {
     "message": "Works on all YouTube pages",
     "description": "Info item 3"
+  },
+  "languageLabel": {
+    "message": "Language",
+    "description": "Language switcher label"
   },
   "version": {
     "message": "Version 1.0",
