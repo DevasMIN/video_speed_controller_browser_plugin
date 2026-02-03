@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Speed Controller</title>
+    <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <div class="logo-section">
+                <div class="logo-icon">⚡</div>
+                <div class="logo-text">
+                    <div class="logo-title">VIDEO SPEED</div>
+                    <div class="logo-subtitle">controller</div>
+                </div>
+            </div>
+            <div class="header-controls">
+                <button id="resetAll" class="btn-reset" title="Сбросить все настройки">
+                    <span class="icon">↶</span> Reset all
+                </button>
+                <label class="toggle-switch" for="toggleEnabled">
+                    <input type="checkbox" id="toggleEnabled" name="toggleEnabled" checked aria-label="Enable or disable speed controller">
+                    <span class="slider"></span>
+                    <span class="toggle-label">ON/OFF</span>
+                </label>
+            </div>
+        </div>
+
+        <!-- Scope Selection -->
+        <div class="scope-section">
+            <label class="radio-option" for="scopeTab">
+                <input type="radio" id="scopeTab" name="scope" value="tab" checked>
+                <span>For this tab</span>
+            </label>
+            <label class="radio-option" for="scopeDomain">
+                <input type="radio" id="scopeDomain" name="scope" value="domain">
+                <span>For this domain</span>
+            </label>
+            <label class="radio-option" for="scopeAll">
+                <input type="radio" id="scopeAll" name="scope" value="all">
+                <span>For all tabs</span>
+            </label>
+        </div>
+
+        <!-- Speed Adjustment -->
+        <div class="speed-controls">
+            <button class="btn-adjust" id="decrease5">-5%</button>
+            <button class="btn-adjust" id="decrease1">-1%</button>
+            <div class="speed-display">
+                <label for="currentSpeed" class="sr-only">Current speed</label>
+                <input type="number" id="currentSpeed" name="currentSpeed" value="100" min="25" max="1600" step="1" aria-label="Current playback speed percentage">
+                <span class="percent">%</span>
+            </div>
+            <button class="btn-adjust" id="increase1">+1%</button>
+            <button class="btn-adjust" id="increase5">+5%</button>
+        </div>
+
+        <!-- Preset Speed Grid -->
+        <div class="preset-grid" id="presetGrid">
+            <!-- Ячейки будут созданы динамически через JS -->
+        </div>
+
+        <!-- Current Playing Info -->
+        <div class="video-info">
+            <div class="info-line">
+                <span>Current playing:</span>
+                <span id="currentUrl" class="url">-</span>
+                <span class="info-icon" title="Информация">ⓘ</span>
+            </div>
+            <div class="status-line">
+                <span id="playStatus" class="status">⏸ On Pause</span>
+                <span id="currentSpeedDisplay" class="speed-status">1.00x</span>
+                <span id="currentTime" class="time">0:00</span>
+            </div>
+        </div>
+
+        <!-- Shortcuts -->
+        <div class="shortcuts-section">
+            <div class="shortcuts-title">Shortcuts</div>
+            <div id="shortcutsList" class="shortcuts-list">
+                <!-- Горячие клавиши будут добавлены динамически -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal для редактирования ячейки -->
+    <div id="editModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Редактировать пресет</h3>
+                <button class="modal-close" id="closeModal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label for="editSpeed">Скорость (%):</label>
+                    <input type="number" id="editSpeed" name="editSpeed" min="25" max="1600" step="1" aria-label="Preset speed percentage">
+                </div>
+                <div class="form-group">
+                    <label for="editShortcut">Горячая клавиша:</label>
+                    <input type="text" id="editShortcut" name="editShortcut" placeholder="Нажмите клавишу..." readonly aria-label="Keyboard shortcut for this preset">
+                    <button class="btn-clear" id="clearShortcut">Очистить</button>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn-save" id="saveEdit">Сохранить</button>
+                <button class="btn-cancel" id="cancelEdit">Отмена</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="popup.js"></script>
+</body>
+</html>
