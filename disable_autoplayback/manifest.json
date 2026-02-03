@@ -1,8 +1,9 @@
 {
   "manifest_version": 3,
-  "name": "YouTube Autoplay Blocker",
+  "name": "__MSG_extName__",
   "version": "1.0",
-  "description": "Отключает автоматическое воспроизведение видео на YouTube при переключении на вкладку",
+  "description": "__MSG_extDescription__",
+  "default_locale": "ru",
   "permissions": [
     "storage"
   ],

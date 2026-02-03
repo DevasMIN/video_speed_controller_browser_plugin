@@ -11,8 +11,39 @@ let currentEditingIndex = null;
 let isEnabled = true;
 let currentScope = 'tab';
 
+// Функция для применения переводов
+function applyI18n() {
+    // Обрабатываем элементы с data-i18n
+    document.querySelectorAll('[data-i18n]').forEach(element => {
+        const key = element.getAttribute('data-i18n');
+        const message = chrome.i18n.getMessage(key);
+        if (message) {
+            element.textContent = message;
+        }
+    });
+    
+    // Обрабатываем title атрибуты
+    document.querySelectorAll('[data-i18n-title]').forEach(element => {
+        const key = element.getAttribute('data-i18n-title');
+        const message = chrome.i18n.getMessage(key);
+        if (message) {
+            element.title = message;
+        }
+    });
+    
+    // Обрабатываем placeholder атрибуты
+    document.querySelectorAll('[data-i18n-placeholder]').forEach(element => {
+        const key = element.getAttribute('data-i18n-placeholder');
+        const message = chrome.i18n.getMessage(key);
+        if (message) {
+            element.placeholder = message;
+        }
+    });
+}
+
 // Инициализация
 async function init() {
+    applyI18n(); // Применяем переводы
     await loadSettings();
     renderPresets();
     setupEventListeners();

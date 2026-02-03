@@ -1,8 +1,9 @@
 {
   "manifest_version": 3,
-  "name": "Video Speed Controller",
+  "name": "__MSG_extName__",
   "version": "1.0",
-  "description": "Управление скоростью воспроизведения видео с настраиваемыми пресетами и горячими клавишами",
+  "description": "__MSG_extDescription__",
+  "default_locale": "ru",
   "permissions": [
     "activeTab",
     "storage",

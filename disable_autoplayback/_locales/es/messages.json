@@ -1,0 +1,58 @@
+{
+  "extName": {
+    "message": "QuietTabs",
+    "description": "Nombre de la extensión"
+  },
+  "extDescription": {
+    "message": "Desactiva la reproducción automática de videos en YouTube al cambiar de pestaña",
+    "description": "Descripción de la extensión"
+  },
+  "popupTitle": {
+    "message": "🛑 QuietTabs",
+    "description": "Título del popup"
+  },
+  "popupSubtitle": {
+    "message": "Bloqueador de Reproducción Automática de YouTube",
+    "description": "Subtítulo del popup"
+  },
+  "statusLabel": {
+    "message": "Estado de la extensión",
+    "description": "Etiqueta de estado"
+  },
+  "statusEnabled": {
+    "message": "Activado",
+    "description": "Estado: activado"
+  },
+  "statusDisabled": {
+    "message": "Desactivado",
+    "description": "Estado: desactivado"
+  },
+  "infoTitle": {
+    "message": "ℹ️ Cómo funciona:",
+    "description": "Título de información"
+  },
+  "infoItem1": {
+    "message": "Detiene automáticamente los videos al cambiar a la pestaña de YouTube",
+    "description": "Elemento de información 1"
+  },
+  "infoItem2": {
+    "message": "Bloquea el atributo autoplay en elementos de video",
+    "description": "Elemento de información 2"
+  },
+  "infoItem3": {
+    "message": "Funciona en todas las páginas de YouTube",
+    "description": "Elemento de información 3"
+  },
+  "version": {
+    "message": "Versión 1.0",
+    "description": "Versión de la extensión"
+  },
+  "notificationEnabled": {
+    "message": "Extensión activada",
+    "description": "Notificación: activada"
+  },
+  "notificationDisabled": {
+    "message": "Extensión desactivada",
+    "description": "Notificación: desactivada"
+  }
+}

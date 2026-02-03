@@ -13,18 +13,18 @@
             <div class="logo-section">
                 <div class="logo-icon">⚡</div>
                 <div class="logo-text">
-                    <div class="logo-title">VIDEO SPEED</div>
-                    <div class="logo-subtitle">controller</div>
+                    <div class="logo-title" data-i18n="logoTitle">SPEEDTUNE</div>
+                    <div class="logo-subtitle" data-i18n="logoSubtitle">контроллер</div>
                 </div>
             </div>
             <div class="header-controls">
-                <button id="resetAll" class="btn-reset" title="Сбросить все настройки">
-                    <span class="icon">↶</span> Reset all
+                <button id="resetAll" class="btn-reset" data-i18n-title="resetAllTitle" title="Сбросить все настройки">
+                    <span class="icon">↶</span> <span data-i18n="resetAllButton">Сбросить</span>
                 </button>
                 <label class="toggle-switch" for="toggleEnabled">
                     <input type="checkbox" id="toggleEnabled" name="toggleEnabled" checked aria-label="Enable or disable speed controller">
                     <span class="slider"></span>
-                    <span class="toggle-label">ON/OFF</span>
+                    <span class="toggle-label" data-i18n="toggleLabel">ВКЛ/ВЫКЛ</span>
                 </label>
             </div>
         </div>
@@ -33,15 +33,15 @@
         <div class="scope-section">
             <label class="radio-option" for="scopeTab">
                 <input type="radio" id="scopeTab" name="scope" value="tab" checked>
-                <span>For this tab</span>
+                <span data-i18n="scopeTab">Для этой вкладки</span>
             </label>
             <label class="radio-option" for="scopeDomain">
                 <input type="radio" id="scopeDomain" name="scope" value="domain">
-                <span>For this domain</span>
+                <span data-i18n="scopeDomain">Для этого домена</span>
             </label>
             <label class="radio-option" for="scopeAll">
                 <input type="radio" id="scopeAll" name="scope" value="all">
-                <span>For all tabs</span>
+                <span data-i18n="scopeAll">Для всех вкладок</span>
             </label>
         </div>
 
@@ -66,12 +66,12 @@
         <!-- Current Playing Info -->
         <div class="video-info">
             <div class="info-line">
-                <span>Current playing:</span>
+                <span data-i18n="currentPlaying">Сейчас играет:</span>
                 <span id="currentUrl" class="url">-</span>
-                <span class="info-icon" title="Информация">ⓘ</span>
+                <span class="info-icon" data-i18n-title="infoTooltip" title="Информация">ⓘ</span>
             </div>
             <div class="status-line">
-                <span id="playStatus" class="status">⏸ On Pause</span>
+                <span id="playStatus" class="status" data-i18n="playStatus">⏸ На паузе</span>
                 <span id="currentSpeedDisplay" class="speed-status">1.00x</span>
                 <span id="currentTime" class="time">0:00</span>
             </div>
@@ -79,7 +79,7 @@
 
         <!-- Shortcuts -->
         <div class="shortcuts-section">
-            <div class="shortcuts-title">Shortcuts</div>
+            <div class="shortcuts-title" data-i18n="shortcutsTitle">Горячие клавиши</div>
             <div id="shortcutsList" class="shortcuts-list">
                 <!-- Горячие клавиши будут добавлены динамически -->
             </div>
@@ -90,23 +90,23 @@
     <div id="editModal" class="modal">
         <div class="modal-content">
             <div class="modal-header">
-                <h3>Редактировать пресет</h3>
+                <h3 data-i18n="modalTitle">Редактировать пресет</h3>
                 <button class="modal-close" id="closeModal">&times;</button>
             </div>
             <div class="modal-body">
                 <div class="form-group">
-                    <label for="editSpeed">Скорость (%):</label>
+                    <label for="editSpeed" data-i18n="speedLabel">Скорость (%):</label>
                     <input type="number" id="editSpeed" name="editSpeed" min="25" max="1600" step="1" aria-label="Preset speed percentage">
                 </div>
                 <div class="form-group">
-                    <label for="editShortcut">Горячая клавиша:</label>
-                    <input type="text" id="editShortcut" name="editShortcut" placeholder="Нажмите клавишу..." readonly aria-label="Keyboard shortcut for this preset">
-                    <button class="btn-clear" id="clearShortcut">Очистить</button>
+                    <label for="editShortcut" data-i18n="shortcutLabel">Горячая клавиша:</label>
+                    <input type="text" id="editShortcut" name="editShortcut" data-i18n-placeholder="shortcutPlaceholder" placeholder="Нажмите клавишу..." readonly aria-label="Keyboard shortcut for this preset">
+                    <button class="btn-clear" id="clearShortcut" data-i18n="clearButton">Очистить</button>
                 </div>
             </div>
             <div class="modal-footer">
-                <button class="btn-save" id="saveEdit">Сохранить</button>
-                <button class="btn-cancel" id="cancelEdit">Отмена</button>
+                <button class="btn-save" id="saveEdit" data-i18n="saveButton">Сохранить</button>
+                <button class="btn-cancel" id="cancelEdit" data-i18n="cancelButton">Отмена</button>
             </div>
         </div>
     </div>

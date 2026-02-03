@@ -1,0 +1,58 @@
+{
+  "extName": {
+    "message": "QuietTabs",
+    "description": "Extension name"
+  },
+  "extDescription": {
+    "message": "Disables automatic video playback on YouTube when switching to a tab",
+    "description": "Extension description"
+  },
+  "popupTitle": {
+    "message": "🛑 QuietTabs",
+    "description": "Popup title"
+  },
+  "popupSubtitle": {
+    "message": "YouTube Autoplay Blocker",
+    "description": "Popup subtitle"
+  },
+  "statusLabel": {
+    "message": "Extension Status",
+    "description": "Status label"
+  },
+  "statusEnabled": {
+    "message": "Enabled",
+    "description": "Status: enabled"
+  },
+  "statusDisabled": {
+    "message": "Disabled",
+    "description": "Status: disabled"
+  },
+  "infoTitle": {
+    "message": "ℹ️ How it works:",
+    "description": "Info title"
+  },
+  "infoItem1": {
+    "message": "Automatically stops videos when switching to YouTube tab",
+    "description": "Info item 1"
+  },
+  "infoItem2": {
+    "message": "Blocks autoplay attribute on video elements",
+    "description": "Info item 2"
+  },
+  "infoItem3": {
+    "message": "Works on all YouTube pages",
+    "description": "Info item 3"
+  },
+  "version": {
+    "message": "Version 1.0",
+    "description": "Extension version"
+  },
+  "notificationEnabled": {
+    "message": "Extension enabled",
+    "description": "Notification: enabled"
+  },
+  "notificationDisabled": {
+    "message": "Extension disabled",
+    "description": "Notification: disabled"
+  }
+}

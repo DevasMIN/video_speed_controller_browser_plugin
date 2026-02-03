@@ -9,15 +9,15 @@
 <body>
   <div class="container">
     <div class="header">
-      <h1>🛑 Autoplay Blocker</h1>
-      <p class="subtitle">Блокировка автовоспроизведения YouTube</p>
+      <h1 data-i18n="popupTitle">🛑 QuietTabs</h1>
+      <p class="subtitle" data-i18n="popupSubtitle">Блокировка автовоспроизведения YouTube</p>
     </div>
 
     <div class="content">
       <div class="toggle-section">
         <div class="toggle-label">
-          <span class="label-text">Состояние расширения</span>
-          <span class="status-text" id="statusText">Включено</span>
+          <span class="label-text" data-i18n="statusLabel">Состояние расширения</span>
+          <span class="status-text" id="statusText" data-i18n="statusEnabled">Включено</span>
         </div>
         <label class="switch">
           <input type="checkbox" id="enableToggle" checked>
@@ -26,23 +26,17 @@
       </div>
 
       <div class="info-section">
-        <h3>ℹ️ Как работает:</h3>
+        <h3 data-i18n="infoTitle">ℹ️ Как работает:</h3>
         <ul>
-          <li>Автоматически останавливает видео при переключении на вкладку YouTube</li>
-          <li>Блокирует autoplay атрибут на видео элементах</li>
-          <li>Работает на всех страницах YouTube</li>
+          <li data-i18n="infoItem1">Автоматически останавливает видео при переключении на вкладку YouTube</li>
+          <li data-i18n="infoItem2">Блокирует autoplay атрибут на видео элементах</li>
+          <li data-i18n="infoItem3">Работает на всех страницах YouTube</li>
         </ul>
-      </div>
-
-      <div class="actions">
-        <button id="resetBtn" class="reset-btn">
-          Сбросить настройки
-        </button>
       </div>
     </div>
 
     <div class="footer">
-      <p>Версия 1.0</p>
+      <p data-i18n="version">Версия 1.0</p>
     </div>
   </div>
 

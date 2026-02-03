@@ -2,7 +2,20 @@
 
 const enableToggle = document.getElementById('enableToggle');
 const statusText = document.getElementById('statusText');
-const resetBtn = document.getElementById('resetBtn');
+
+// Функция для применения переводов
+function applyI18n() {
+  document.querySelectorAll('[data-i18n]').forEach(element => {
+    const key = element.getAttribute('data-i18n');
+    const message = chrome.i18n.getMessage(key);
+    if (message) {
+      element.textContent = message;
+    }
+  });
+}
+
+// Применяем переводы при загрузке
+applyI18n();
 
 // Загружаем текущее состояние
 chrome.storage.local.get(['enabled'], (result) => {
@@ -16,22 +29,17 @@ enableToggle.addEventListener('change', (e) => {
   const isEnabled = e.target.checked;
   chrome.storage.local.set({ enabled: isEnabled }, () => {
     updateStatusText(isEnabled);
-    showNotification(isEnabled ? 'Расширение включено' : 'Расширение выключено');
-  });
-});
-
-// Обработчик кнопки сброса
-resetBtn.addEventListener('click', () => {
-  chrome.storage.local.clear(() => {
-    enableToggle.checked = true;
-    updateStatusText(true);
-    showNotification('Настройки сброшены');
+    const message = isEnabled 
+      ? chrome.i18n.getMessage('notificationEnabled') 
+      : chrome.i18n.getMessage('notificationDisabled');
+    showNotification(message);
   });
 });
 
 // Обновление текста статуса
 function updateStatusText(isEnabled) {
-  statusText.textContent = isEnabled ? 'Включено' : 'Выключено';
+  const key = isEnabled ? 'statusEnabled' : 'statusDisabled';
+  statusText.textContent = chrome.i18n.getMessage(key);
   statusText.style.color = isEnabled ? '#4CAF50' : '#ff6b6b';
 }
 

@@ -145,33 +145,6 @@ input:checked + .slider:before {
   font-weight: bold;
 }
 
-.actions {
-  margin-top: 20px;
-}
-
-.reset-btn {
-  width: 100%;
-  padding: 12px;
-  background: rgba(255, 255, 255, 0.2);
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  border-radius: 8px;
-  color: white;
-  font-size: 13px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.3s;
-}
-
-.reset-btn:hover {
-  background: rgba(255, 255, 255, 0.3);
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-}
-
-.reset-btn:active {
-  transform: translateY(0);
-}
-
 .footer {
   text-align: center;
   margin-top: 15px;
