@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>YouTube Autoplay Blocker</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>🛑 Autoplay Blocker</h1>
+      <p class="subtitle">Блокировка автовоспроизведения YouTube</p>
+    </div>
+
+    <div class="content">
+      <div class="toggle-section">
+        <div class="toggle-label">
+          <span class="label-text">Состояние расширения</span>
+          <span class="status-text" id="statusText">Включено</span>
+        </div>
+        <label class="switch">
+          <input type="checkbox" id="enableToggle" checked>
+          <span class="slider"></span>
+        </label>
+      </div>
+
+      <div class="info-section">
+        <h3>ℹ️ Как работает:</h3>
+        <ul>
+          <li>Автоматически останавливает видео при переключении на вкладку YouTube</li>
+          <li>Блокирует autoplay атрибут на видео элементах</li>
+          <li>Работает на всех страницах YouTube</li>
+        </ul>
+      </div>
+
+      <div class="actions">
+        <button id="resetBtn" class="reset-btn">
+          Сбросить настройки
+        </button>
+      </div>
+    </div>
+
+    <div class="footer">
+      <p>Версия 1.0</p>
+    </div>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>
