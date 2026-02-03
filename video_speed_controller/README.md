@@ -1,43 +1,64 @@
 # SpeedTune ⚡
 
-Chrome-расширение для управления скоростью воспроизведения видео с настраиваемыми пресетами и горячими клавишами.
+Chrome extension for controlling video playback speed with customizable presets and keyboard shortcuts.
 
-> **Поддержка языков:** Русский 🇷🇺 | English 🇺🇸 | Español 🇪🇸
+> **Language support:** 🇷🇺 Русский | 🇺🇸 English | 🇪🇸 Español
 
-## Установка
+## Installation
 
-1. Откройте Chrome и перейдите в `chrome://extensions/`
-2. Включите "Режим разработчика" (Developer mode) в правом верхнем углу
-3. Нажмите "Загрузить распакованное расширение" (Load unpacked)
-4. Выберите папку проекта `chrome_plugin_for_youtube`
+1. Open Chrome and navigate to `chrome://extensions/`
+2. Enable "Developer mode" in the top right corner
+3. Click "Load unpacked"
+4. Select the `video_speed_controller` folder
 
-## Иконка
+## Icon
 
-Для работы расширения необходима иконка. Создайте файл `icons/icon.png` размером:
-- 16x16 пикселей
-- 48x48 пикселей  
-- 128x128 пикселей
+The extension needs an icon to work. Create or use an `icons/icon.png` file with sizes:
+- 16x16 pixels
+- 48x48 pixels  
+- 128x128 pixels
 
-Можно использовать любой графический редактор или онлайн-генератор иконок.
+You can use any graphic editor or online icon generator.
 
-## Функциональность
+## Features
 
-- ✅ Управление скоростью через кнопки и пресеты
-- ✅ Редактирование ячеек пресетов (клик по иконке ✎)
-- ✅ Назначение горячих клавиш для каждого пресета
-- ✅ Три области применения: для вкладки, домена или всех вкладок
-- ✅ Включение/выключение расширения
-- ✅ Сброс всех настроек
-- ✅ Автоматическое сохранение настроек
+- ✅ Speed control through buttons and presets
+- ✅ Edit preset cells (click the ✎ icon)
+- ✅ Assign keyboard shortcuts for each preset
+- ✅ Three application scopes: for tab, domain, or all tabs
+- ✅ Enable/disable extension
+- ✅ Reset all settings
+- ✅ Automatic settings persistence
 
-## Использование
+## Usage
 
-1. Откройте страницу с видео
-2. Нажмите на иконку расширения в панели инструментов Chrome
-3. Выберите скорость из пресетов или используйте кнопки +/- для точной настройки
-4. Для редактирования пресета наведите на ячейку и нажмите на иконку ✎
-5. В модальном окне можно изменить скорость и назначить горячую клавишу
+1. Open a page with video
+2. Click the extension icon in Chrome toolbar
+3. Select speed from presets or use +/- buttons for fine-tuning
+4. To edit a preset, hover over the cell and click the ✎ icon
+5. In the modal window you can change speed and assign a keyboard shortcut
 
-## Горячие клавиши
+## Keyboard Shortcuts
 
-После назначения горячих клавиш в настройках пресетов, вы можете использовать их на любой странице с видео для быстрого переключения скорости.
+After assigning keyboard shortcuts in preset settings, you can use them on any page with video for quick speed switching.
+
+## Application Scopes
+
+- **For this tab** - speed applies only to the current tab
+- **For this domain** - speed applies to all tabs on the current domain
+- **For all tabs** - speed applies to all tabs with videos
+
+## Technical Information
+
+- **Manifest Version**: 3
+- **Permissions**: activeTab, storage, scripting, tabs
+- **Host Permissions**: <all_urls>
+- **Content Scripts**: Runs on all pages
+- **Background Service**: Handles shortcuts and settings
+
+## Notes
+
+- Works with any video on any website
+- Supports speeds from 25% to 1600%
+- Settings are saved automatically
+- Minimal performance impact

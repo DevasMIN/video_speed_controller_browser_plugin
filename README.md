@@ -1,84 +1,86 @@
 # Browser Plugins Collection
 
-Коллекция полезных расширений для Chrome с поддержкой нескольких языков.
+Collection of useful Chrome extensions with multi-language support.
 
-## 🔌 Плагины
+> **Languages:** 🇷🇺 Русский | 🇺🇸 English | 🇪🇸 Español
+
+## 🔌 Plugins
 
 ### 1. SpeedTune ⚡
-**Папка:** `video_speed_controller/`
+**Folder:** `video_speed_controller/`
 
-Управление скоростью воспроизведения видео с настраиваемыми пресетами и горячими клавишами.
+Control video playback speed with customizable presets and keyboard shortcuts.
 
-**Возможности:**
-- ✅ Настраиваемые пресеты скорости
-- ✅ Горячие клавиши для быстрого переключения
-- ✅ Три области применения: вкладка, домен, все вкладки
-- ✅ Красивый интерфейс с градиентами
-- ✅ Поддержка всех видео на любых сайтах
+**Features:**
+- ✅ Customizable speed presets
+- ✅ Keyboard shortcuts for quick switching
+- ✅ Three application scopes: tab, domain, all tabs
+- ✅ Beautiful gradient interface
+- ✅ Support for all videos on any website
 
 ### 2. QuietTabs 🛑
-**Папка:** `disable_autoplayback/`
+**Folder:** `disable_autoplayback/`
 
-Блокировка автоматического воспроизведения видео на YouTube при переключении на вкладку.
+Blocks automatic video playback on YouTube when switching to a tab.
 
-**Возможности:**
-- ✅ Умная блокировка автовоспроизведения
-- ✅ Не останавливает видео, которые уже играли
-- ✅ Удаление autoplay атрибута
-- ✅ Переключатель вкл/выкл
-- ✅ Минимальное влияние на производительность
+**Features:**
+- ✅ Smart autoplay blocking
+- ✅ Doesn't stop videos that were already playing
+- ✅ Removes autoplay attribute
+- ✅ On/off toggle
+- ✅ Minimal performance impact
 
-## 🌐 Поддержка языков
+## 🌐 Language Support
 
-Все плагины поддерживают:
-- 🇷🇺 Русский (по умолчанию)
+All plugins support:
+- 🇷🇺 Russian (default)
 - 🇺🇸 English
-- 🇪🇸 Español
+- 🇪🇸 Spanish
 
-Язык выбирается автоматически на основе языка браузера.
+Language is selected automatically based on browser language.
 
-## 📦 Установка
+## 📦 Installation
 
-1. Откройте Chrome и перейдите в `chrome://extensions/`
-2. Включите "Режим разработчика" (Developer mode)
-3. Нажмите "Загрузить распакованное расширение" (Load unpacked)
-4. Выберите нужную папку плагина (`video_speed_controller/` или `disable_autoplayback/`)
+1. Open Chrome and navigate to `chrome://extensions/`
+2. Enable "Developer mode" in the top right corner
+3. Click "Load unpacked"
+4. Select the plugin folder (`video_speed_controller/` or `disable_autoplayback/`)
 
-## 🛠️ Технологии
+## 🛠️ Technologies
 
-- **Manifest V3** - современный стандарт Chrome Extensions
-- **Chrome i18n API** - интернационализация
-- **WeakMap** - эффективное отслеживание состояния элементов
-- **Chrome Storage API** - сохранение настроек
-- **Content Scripts** - взаимодействие со страницами
+- **Manifest V3** - modern Chrome Extensions standard
+- **Chrome i18n API** - internationalization
+- **WeakMap** - efficient element state tracking
+- **Chrome Storage API** - settings persistence
+- **Content Scripts** - page interaction
 
-## 📝 Структура проекта
+## 📝 Project Structure
 
 ```
 browser_plugins/
 ├── video_speed_controller/    # SpeedTune
-│   ├── _locales/              # Переводы (ru, en, es)
-│   ├── icons/                 # Иконки
-│   ├── manifest.json          # Конфигурация
-│   ├── popup.html/css/js      # Интерфейс
-│   ├── content.js             # Скрипт для страниц
-│   └── background.js          # Фоновый процесс
+│   ├── _locales/              # Translations (ru, en, es)
+│   ├── icons/                 # Icons
+│   ├── manifest.json          # Configuration
+│   ├── popup.html/css/js      # Interface
+│   ├── content.js             # Page scripts
+│   └── background.js          # Background service
 │
 ├── disable_autoplayback/      # QuietTabs
-│   ├── _locales/              # Переводы (ru, en, es)
-│   ├── icons/                 # Иконки
-│   ├── manifest.json          # Конфигурация
-│   ├── popup.html/css/js      # Интерфейс
-│   └── content.js             # Скрипт для страниц
+│   ├── _locales/              # Translations (ru, en, es)
+│   ├── icons/                 # Icons
+│   ├── manifest.json          # Configuration
+│   ├── popup.html/css/js      # Interface
+│   └── content.js             # Page scripts
 │
-└── README.md                  # Этот файл
+└── README.md                  # This file
 ```
 
-## 🤝 Вклад
+## 🤝 Contributing
 
-Проект открыт для улучшений и предложений!
+Project is open for improvements and suggestions!
 
-## 📄 Лицензия
+## 📄 License
 
 MIT License
 
