@@ -3,7 +3,7 @@
 
 let isExtensionEnabled = true;
 let wasTabVisible = document.visibilityState === 'visible';
-let videosPlayingBeforeHide = new Set(); // Храним видео, которые играли до скрытия вкладки
+const videoStates = new WeakMap(); // Храним состояние каждого видео
 
 // Загружаем настройки
 chrome.storage.local.get(['enabled'], (result) => {
@@ -17,37 +17,44 @@ chrome.storage.onChanged.addListener((changes) => {
   }
 });
 
-// Функция для остановки только автоматически запущенных видео
+// Помечаем все видео перед скрытием вкладки
+function markPlayingVideos() {
+  const videos = document.querySelectorAll('video');
+  videos.forEach(video => {
+    const wasPlaying = !video.paused;
+    videoStates.set(video, { wasPlayingBeforeHide: wasPlaying });
+    if (wasPlaying) {
+      console.log('[YouTube Autoplay Blocker] Запомнили играющее видео');
+    }
+  });
+}
+
+// Останавливаем только автоматически запущенные видео
 function pauseAutoplayedVideos() {
   if (!isExtensionEnabled) return;
 
   const videos = document.querySelectorAll('video');
   videos.forEach(video => {
-    // Останавливаем только если видео играет И его не было в списке играющих до скрытия вкладки
-    if (!video.paused && !videosPlayingBeforeHide.has(video)) {
-      video.pause();
-      console.log('[YouTube Autoplay Blocker] Автовоспроизведение заблокировано');
+    if (!video.paused) {
+      const state = videoStates.get(video);
+      // Останавливаем только если видео НЕ играло до скрытия вкладки
+      if (!state || !state.wasPlayingBeforeHide) {
+        video.pause();
+        console.log('[YouTube Autoplay Blocker] Автовоспроизведение заблокировано');
+      } else {
+        console.log('[YouTube Autoplay Blocker] Видео продолжает играть (играло до скрытия)');
+      }
     }
   });
-  
-  // Очищаем список после проверки
-  videosPlayingBeforeHide.clear();
 }
 
 // Отслеживаем изменение видимости вкладки
 document.addEventListener('visibilitychange', () => {
   if (document.visibilityState === 'hidden') {
-    // Вкладка скрывается - сохраняем какие видео сейчас играют
-    videosPlayingBeforeHide.clear();
-    const videos = document.querySelectorAll('video');
-    videos.forEach(video => {
-      if (!video.paused) {
-        videosPlayingBeforeHide.add(video);
-        console.log('[YouTube Autoplay Blocker] Запомнили играющее видео');
-      }
-    });
+    // Вкладка скрывается - запоминаем состояние всех видео
+    markPlayingVideos();
   } else if (document.visibilityState === 'visible' && !wasTabVisible) {
-    // Вкладка стала видимой - даём небольшую задержку и останавливаем только автоматически запущенные видео
+    // Вкладка стала видимой - даём задержку для проверки автовоспроизведения
     setTimeout(pauseAutoplayedVideos, 100);
     setTimeout(pauseAutoplayedVideos, 300);
     setTimeout(pauseAutoplayedVideos, 500);
@@ -55,36 +62,25 @@ document.addEventListener('visibilitychange', () => {
   wasTabVisible = document.visibilityState === 'visible';
 });
 
-// Перехватываем попытки автоматического воспроизведения
-const originalPlay = HTMLMediaElement.prototype.play;
-let justBecameVisible = false;
-let visibilityTimer = null;
-
-document.addEventListener('visibilitychange', () => {
-  if (document.visibilityState === 'visible' && !wasTabVisible) {
-    justBecameVisible = true;
-    // Сбрасываем флаг через 1 секунду
-    clearTimeout(visibilityTimer);
-    visibilityTimer = setTimeout(() => {
-      justBecameVisible = false;
-    }, 1000);
+// Обрабатываем добавленные видео элементы
+function processVideo(video) {
+  // Инициализируем состояние для нового видео
+  if (!videoStates.has(video)) {
+    videoStates.set(video, { wasPlayingBeforeHide: false });
+    
+    // Сбрасываем состояние при загрузке нового видео в тот же элемент
+    video.addEventListener('loadstart', () => {
+      videoStates.set(video, { wasPlayingBeforeHide: false });
+      console.log('[YouTube Autoplay Blocker] Сброшено состояние для нового видео');
+    });
   }
-}, true);
-
-HTMLMediaElement.prototype.play = function() {
-  if (!isExtensionEnabled) {
-    return originalPlay.apply(this, arguments);
+  
+  // Удаляем autoplay атрибут
+  if (video.hasAttribute('autoplay')) {
+    video.removeAttribute('autoplay');
+    console.log('[YouTube Autoplay Blocker] Autoplay атрибут удалён');
   }
-
-  // Проверяем, было ли вызвано воспроизведение сразу после переключения на вкладку
-  // И это видео НЕ было в списке играющих до скрытия
-  if (justBecameVisible && !videosPlayingBeforeHide.has(this)) {
-    console.log('[YouTube Autoplay Blocker] Play() заблокирован');
-    return Promise.resolve();
-  }
-
-  return originalPlay.apply(this, arguments);
-};
+}
 
 // MutationObserver для отслеживания новых видео элементов
 const observer = new MutationObserver((mutations) => {
@@ -93,19 +89,10 @@ const observer = new MutationObserver((mutations) => {
   mutations.forEach((mutation) => {
     mutation.addedNodes.forEach((node) => {
       if (node.nodeName === 'VIDEO') {
-        // Блокируем autoplay атрибут
-        if (node.hasAttribute('autoplay')) {
-          node.removeAttribute('autoplay');
-          console.log('[YouTube Autoplay Blocker] Autoplay атрибут удалён');
-        }
-
-        // Слушаем событие play
-        node.addEventListener('play', (e) => {
-          if (document.visibilityState === 'visible' && !wasTabVisible) {
-            e.target.pause();
-            console.log('[YouTube Autoplay Blocker] Play событие заблокировано');
-          }
-        }, { once: true });
+        processVideo(node);
+      } else if (node.querySelectorAll) {
+        // Обрабатываем вложенные видео
+        node.querySelectorAll('video').forEach(processVideo);
       }
     });
   });
@@ -117,14 +104,10 @@ observer.observe(document.documentElement, {
   subtree: true
 });
 
-// Обрабатываем существующие видео
+// Обрабатываем существующие видео при загрузке
 function processExistingVideos() {
   const videos = document.querySelectorAll('video');
-  videos.forEach(video => {
-    if (video.hasAttribute('autoplay')) {
-      video.removeAttribute('autoplay');
-    }
-  });
+  videos.forEach(processVideo);
 }
 
 // Запускаем при загрузке страницы
