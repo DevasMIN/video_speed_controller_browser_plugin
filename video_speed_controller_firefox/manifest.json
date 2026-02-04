@@ -7,8 +7,9 @@
   "browser_specific_settings": {
     "gecko": {
       "id": "speedtube@local",
-      "strict_min_version": "109.0",
+      "strict_min_version": "140.0",
       "data_collection_permissions": {
+        "required": false,
         "description": "This extension does not collect any user data. All settings are stored locally."
       }
     }
@@ -47,7 +48,6 @@
   "icons": {
     "16": "icons/favicon-16x16.png",
     "32": "icons/favicon-32x32.png",
-    "48": "icons/favicon-32x32.png",
     "128": "icons/icon_128x128.png"
   }
 }
