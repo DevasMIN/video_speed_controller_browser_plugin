@@ -4,6 +4,9 @@
   "version": "1.0",
   "description": "__MSG_extDescription__",
   "default_locale": "ru",
+  "data_collection_permissions": {
+    "description": "This extension does not collect any user data. All settings are stored locally."
+  },
   "browser_specific_settings": {
     "gecko": {
       "id": "speedtube@local",
