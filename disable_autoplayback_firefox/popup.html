@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Youtube - NoAutoPlay</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <div class="header-row">
+        <img class="header-icon" src="icons/noautoplay_128x128.png" alt="">
+        <h1 class="header-title" data-i18n="appNameShort">No Auto Play</h1>
+      </div>
+    </div>
+
+    <div class="content">
+      <div class="lang-section">
+        <span class="lang-label" data-i18n="languageLabel">Язык</span>
+        <div class="lang-buttons">
+          <button type="button" class="lang-btn active" data-lang="ru">RU</button>
+          <button type="button" class="lang-btn" data-lang="en">EN</button>
+          <button type="button" class="lang-btn" data-lang="es">ES</button>
+        </div>
+      </div>
+      <div class="toggle-section">
+        <div class="toggle-label">
+          <span class="label-text" data-i18n="statusLabel">Состояние расширения</span>
+          <span class="status-text" id="statusText" data-i18n="statusEnabled">Включено</span>
+        </div>
+        <label class="switch">
+          <input type="checkbox" id="enableToggle" checked>
+          <span class="slider"></span>
+        </label>
+      </div>
+
+      <div class="info-section">
+        <h3 data-i18n="infoTitle">ℹ️ Как работает:</h3>
+        <ul>
+          <li data-i18n="infoItem1">Автоматически останавливает видео при переключении на вкладку YouTube</li>
+          <li data-i18n="infoItem2">Блокирует autoplay атрибут на видео элементах</li>
+          <li data-i18n="infoItem3">Работает на всех страницах YouTube</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer">
+      <p data-i18n="version">Версия 1.0</p>
+    </div>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>
