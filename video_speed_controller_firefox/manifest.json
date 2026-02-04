@@ -7,11 +7,7 @@
   "browser_specific_settings": {
     "gecko": {
       "id": "speedtube@local",
-      "strict_min_version": "142.0",
-      "data_collection_permissions": {
-        "required": ["storage"],
-        "description": "This extension uses local storage only to save user preferences. No data is collected or sent to external servers."
-      }
+      "strict_min_version": "109.0"
     }
   },
   "permissions": [
