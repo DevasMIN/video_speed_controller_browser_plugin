@@ -4,14 +4,13 @@
   "version": "1.0",
   "description": "__MSG_extDescription__",
   "default_locale": "ru",
+  "data_collection_permissions": {
+    "description": "This extension does not collect any user data. All settings are stored locally."
+  },
   "browser_specific_settings": {
     "gecko": {
       "id": "speedtube@local",
-      "strict_min_version": "142.0",
-      "data_collection_permissions": {
-        "required": ["storage"],
-        "description": "This extension uses local storage only to save user preferences. No data is collected or sent to external servers."
-      }
+      "strict_min_version": "109.0"
     }
   },
   "permissions": [
@@ -48,6 +47,7 @@
   "icons": {
     "16": "icons/favicon-16x16.png",
     "32": "icons/favicon-32x32.png",
+    "48": "icons/icon_128x128.png",
     "128": "icons/icon_128x128.png"
   }
 }
